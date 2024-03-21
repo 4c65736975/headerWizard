@@ -1,3 +1,0 @@
--- @author: 4c65736975, All Rights Reserved
--- @version: 1.0.0.0, {date}
--- @filename: {filename}
