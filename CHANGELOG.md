@@ -1,11 +1,5 @@
 # Changelog
 
-## 1.0.0.0
+## 1.0.0
 
-Features:
-
--
-
-Fix:
-
--
+Initial release
