@@ -1,41 +1,109 @@
 {
-  "name": "autoheader",
+  "name": "auto-header",
   "displayName": "AutoHeader",
-  "description": "",
-  "version": "0.0.1",
+  "author": "4c65736975",
+  "homepage": "https://github.com/4c65736975/autoHeader",
+  "description": "A simple extension that adds the ability to add template headers that are automatically added when creating a file.",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.87.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": ["onStartupFinished"],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "contributes": {
     "commands": [
       {
-        "command": "extension.createHeaderTemplate",
-        "title": "Create Header Template"
+        "command": "autoHeader.createTemplate",
+        "title": "Auto Header: Create a template",
+        "icon": "$(add)"
+      },
+      {
+        "command": "autoHeader.activeTemplate",
+        "title": "Auto Header: Active a template",
+        "icon": "$(check)"
+      },
+      {
+        "command": "autoHeader.deleteTemplate",
+        "title": "Auto Header: Delete a template",
+        "icon": "$(trash)"
       }
-    ]
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "autoHeader",
+          "title": "Auto Header",
+          "icon": "$(symbol-parameter)"
+        }
+      ]
+    },
+    "views": {
+      "autoHeader": [
+        {
+          "id": "autoHeader.templates",
+          "name": "My Templates",
+          "type": "tree",
+          "visibility": "visible"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "autoHeader.templates",
+        "contents": "No templates yet!\n[Create a template](command:autoHeader.createTemplate)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "autoHeader.createTemplate",
+          "when": "view == autoHeader.templates",
+          "group": "navigation@1"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "autoHeader.activeTemplate",
+          "group": "inline"
+        },
+        {
+          "command": "autoHeader.deleteTemplate",
+          "group": "inline"
+        }
+      ]
+    }
   },
   "main": "./out/extension.js",
   "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "npm run package",
+    "compile": "node ./esbuild.js",
+    "package": "NODE_ENV=production node ./esbuild.js",
+    "watch": "node ./esbuild.js --watch",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.87.0",
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
+    "@types/uuid": "^9.0.8",
+    "@types/vscode": "^1.87.0",
+    "@types/vscode-webview": "^1.57.5",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
-    "eslint": "^8.56.0",
-    "typescript": "^5.3.3",
     "@vscode/test-cli": "^0.0.6",
-    "@vscode/test-electron": "^2.3.9"
+    "@vscode/test-electron": "^2.3.9",
+    "esbuild": "^0.20.2",
+    "esbuild-plugin-copy": "^2.1.1",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@vscode/webview-ui-toolkit": "^1.4.0",
+    "uuid": "^9.0.1"
   }
 }
