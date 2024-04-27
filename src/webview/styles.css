@@ -1,0 +1,24 @@
+#template-body {
+  display: flex;
+  flex-direction: column;
+}
+
+#template-form {
+  display: grid;
+  grid-auto-flow: row;
+  row-gap: 1.5rem;
+}
+
+#submit-button {
+  width: min-content;
+}
+
+.extension-dot {
+  width: 0;
+}
+
+.base-template-info-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
