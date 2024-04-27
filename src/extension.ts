@@ -1,99 +1,104 @@
 import * as fs from "fs";
 import * as vscode from "vscode";
-import path from "path";
 
-const templatesFolder = "templates";
+import { v4 as uuidv4 } from "uuid";
 
-interface ITemplateFile {
-  [key: string]: string;
-}
+import { Template } from "./types/Template";
+import { TemplateDetailsPanel } from "./panels/TemplateDetailsPanel";
+import { TemplatesDataProvider } from "./providers/TemplatesDataProvider";
+import { TemplateManager } from "./managers/TemplateManager";
 
 export function activate(context: vscode.ExtensionContext) {
-  console.log('Congratulations, your extension "autoheader" is now active!');
+  const templateManager: TemplateManager = new TemplateManager(context);
+  const templates = templateManager.getTemplates();
+  const templatesDataProvider = new TemplatesDataProvider(templates);
 
-  let templates = loadHeaderTemplates(context);
-
-  let disposableCommand = vscode.commands.registerCommand("extension.createHeaderTemplate", () => {
-    createHeaderTemplate(context, templates);
+  const treeView = vscode.window.createTreeView("autoHeader.templates", {
+    treeDataProvider: templatesDataProvider,
+    showCollapseAll: false
   });
 
-  let disposableOnFiles = vscode.workspace.onDidCreateFiles((e: vscode.FileCreateEvent) => {
-    e.files.forEach((uri: vscode.Uri) => {
-      const headerTemplate = templates[path.parse(uri.path).ext.substring(1)];
+  const openTemplate = vscode.commands.registerCommand("autoHeader.showTemplateDetailView", () => {
+    const selectedTreeViewItem = treeView.selection[0];
+    const matchingTemplate = templateManager.getTemplateById(selectedTreeViewItem.id);
 
-      if (!headerTemplate) {
+    if (!matchingTemplate) {
+      vscode.window.showErrorMessage("No matching header template found!");
+      return;
+    }
+
+    TemplateDetailsPanel.render(context.extensionUri, matchingTemplate, onDidReceiveMessage);
+  });
+
+  const createTemplate = vscode.commands.registerCommand("autoHeader.createTemplate", () => {
+    const newTemplate: Template = {
+      id: uuidv4(),
+      name: "",
+      extension: "",
+      content: "",
+      isActive: true
+    };
+
+    TemplateDetailsPanel.render(context.extensionUri, newTemplate, onDidReceiveMessage);
+  });
+
+  const activeTemplate = vscode.commands.registerCommand("autoHeader.activeTemplate", (template: Template) => {
+    if (templateManager.setTemplateActive(template.id)) {
+      templatesDataProvider.refresh(templates);
+
+      const currentTemplate = TemplateDetailsPanel.shared?.getCurrentTemplate();
+      const updatedTemplate = templateManager.getTemplateById(template.id);
+
+      if (currentTemplate && updatedTemplate && currentTemplate.extension === updatedTemplate.extension) {
+        TemplateDetailsPanel.render(context.extensionUri, currentTemplate, onDidReceiveMessage);
+      }
+    }
+  });
+
+  const deleteTemplate = vscode.commands.registerCommand("autoHeader.deleteTemplate", (template: Template) => {
+    templateManager.deleteTemplate(template.id);
+    templatesDataProvider.refresh(templates);
+    // Close the panel if it's open
+    TemplateDetailsPanel.shared?.dispose();
+  });
+
+  const onDidCreateFilesEvent = vscode.workspace.onDidCreateFiles(event => {
+    event.files.forEach(uri => {
+      const templateContent = templateManager.getTemplateContent(uri);
+
+      if (templateContent === undefined) {
         return;
       }
 
-      const headerTemplateContent = fs.readFileSync(headerTemplate, "utf-8");
-
-      fs.writeFileSync(uri.fsPath, populateParams(uri, headerTemplateContent), {
+      fs.writeFileSync(uri.fsPath, templateContent, {
         flag: "a+"
       });
     });
   });
 
-  context.subscriptions.push(disposableCommand, disposableOnFiles);
-}
+  const onDidReceiveMessage = (message: any) => {
+    const command = message.command;
 
-function populateParams(filePath: vscode.Uri, headerContent: string): string {
-  headerContent = headerContent.replaceAll("{filename}", path.parse(filePath.path).base);
-  headerContent = headerContent.replaceAll("{date}", getCurrentDateParam());
-  return headerContent;
-}
+    switch (command) {
+      case "save-template":
+        const template = message.template;
 
-function loadHeaderTemplates(context: vscode.ExtensionContext): ITemplateFile {
-  const templatesFolderPath = path.join(context.extensionPath, templatesFolder);
+        if (!templateManager.updateTemplate(template)) {
+          templateManager.createTemplate(template);
+        }
 
-  if (!fs.existsSync(templatesFolderPath)) {
-    return {};
-  }
-
-  const templates: ITemplateFile = {};
-  const files = fs.readdirSync(templatesFolderPath);
-
-  files.forEach((file: string) => {
-    templates[path.parse(file).name] = path.join(templatesFolderPath, file);
-  });
-
-  return templates;
-}
-
-function createHeaderTemplate(context: vscode.ExtensionContext, templates: ITemplateFile) {
-  vscode.window.showInputBox({
-    prompt: "Enter the extension name of the template file:"
-  }).then(fileName => {
-    if (fileName) {
-      const templatesFolderPath = path.join(context.extensionPath, templatesFolder);
-      const filePath = path.join(templatesFolderPath, `${fileName}.txt`);
-
-      if (!fs.existsSync(templatesFolderPath)) {
-        fs.mkdirSync(templatesFolderPath);
-      }
-
-      if (!fs.existsSync(filePath)) {
-        fs.writeFileSync(filePath, "");
-
-        templates[fileName] = filePath;
-      } else {
-        vscode.window.showInformationMessage(`Template for .${fileName} extension already exists!`);
-      }
-
-      vscode.workspace.openTextDocument(filePath).then(doc => {
-        vscode.window.showTextDocument(doc);
-      });
+        templatesDataProvider.refresh(templates);
+        break;
     }
-  });
-}
+  };
 
-function getCurrentDateParam(): string {
-  const currentDate = new Date();
-
-  const day = String(currentDate.getDate()).padStart(2, '0');
-  const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-  const year = String(currentDate.getFullYear());
-
-  return `${day}|${month}|${year}`;
+  context.subscriptions.push(
+    openTemplate,
+    createTemplate,
+    activeTemplate,
+    deleteTemplate,
+    onDidCreateFilesEvent
+  );
 }
 
 export function deactivate() {}
