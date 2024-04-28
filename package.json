@@ -1,16 +1,40 @@
 {
   "name": "auto-header",
   "displayName": "AutoHeader",
-  "author": "4c65736975",
-  "homepage": "https://github.com/4c65736975/autoHeader",
   "description": "A simple extension that adds the ability to add template headers that are automatically added when creating a file.",
+  "author": "4c65736975",
+  "publisher": "4c65736975",
+  "pricing": "Free",
   "version": "1.0.0",
-  "engines": {
-    "vscode": "^1.87.0"
-  },
+  "icon": "icon.png",
+  "license": "SEE LICENSE IN LICENSE",
   "categories": [
     "Other"
   ],
+  "homepage": "https://github.com/4c65736975/autoHeader",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/4c65736975/autoHeader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/4c65736975/autoHeader/issues"
+  },
+  "sponsor": {
+    "url": "https://github.com/sponsors/4c65736975"
+  },
+  "engines": {
+    "vscode": "^1.87.0"
+  },
+  "main": "./out/extension.js",
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "node ./esbuild.js",
+    "package": "NODE_ENV=production node ./esbuild.js",
+    "watch": "node ./esbuild.js --watch",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
   "activationEvents": [
     "onStartupFinished"
   ],
@@ -76,16 +100,6 @@
         }
       ]
     }
-  },
-  "main": "./out/extension.js",
-  "scripts": {
-    "vscode:prepublish": "npm run package",
-    "compile": "node ./esbuild.js",
-    "package": "NODE_ENV=production node ./esbuild.js",
-    "watch": "node ./esbuild.js --watch",
-    "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src --ext ts",
-    "test": "vscode-test"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",
