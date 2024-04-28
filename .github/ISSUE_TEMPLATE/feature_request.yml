@@ -6,7 +6,7 @@ assignees:
 - 4c65736975
 body:
 - type: textarea
-  attributes: 
+  attributes:
     label: Description of the new feature / enhancement
     placeholder: What is the expected behavior of the proposed feature?
   validations:
