@@ -38,41 +38,21 @@ const webviewConfig = {
   const args = process.argv.slice(2);
 
   try {
+    const extContext = await esbuild.context({ ...extensionConfig });
+    const webContext = await esbuild.context({ ...webviewConfig });
+
     if (args.includes("--watch")) {
       console.log("[watch] build started!");
 
-      const extContext = await esbuild.context({
-        ...extensionConfig
-      });
-
-      await extContext.watch();
-
-      const webContext = await esbuild.context({
-        ...webviewConfig
-      });
-
-      await webContext.watch();
+      await Promise.all([extContext.watch(), webContext.watch()]);
 
       console.log("[watch] build finished!");
-
-      await extContext.dispose();
-      await webContext.dispose();
     } else {
-      // await build(extensionConfig);
-      const extContext = await esbuild.context({
-        ...extensionConfig
-      });
-
-      const webContext = await esbuild.context({
-        ...webviewConfig
-      });
-
-      await extContext.rebuild();
-      await webContext.rebuild();
+      await Promise.all([extContext.rebuild(), webContext.rebuild()]);
       console.log("Build completed!");
-      await extContext.dispose();
-      await webContext.dispose();
     }
+
+    await Promise.all([extContext.dispose(), webContext.dispose()]);
   } catch (err) {
     process.stderr.write(err.stderr);
     process.exit(1);
