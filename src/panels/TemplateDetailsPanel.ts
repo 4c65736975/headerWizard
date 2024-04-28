@@ -26,7 +26,7 @@ export class TemplateDetailsPanel implements ITemplateDetailsPanel {
   }
 
   public static render(extensionUri: vscode.Uri, template: Template, messageListener: MessageListener) {
-    const title = `${template.name} - .${template.extension} (${template.isActive ? "Active" : "Inactive"})`;
+    const title = `${template.name || "New Template"} - .${template.extension || "lua"} (${template.isActive ? "Active" : "Inactive"})`;
 
     if (!this.shared) {
       const panel = vscode.window.createWebviewPanel("autoHeaderTemplateDetailView", title, vscode.ViewColumn.One, {
@@ -81,23 +81,23 @@ export class TemplateDetailsPanel implements ITemplateDetailsPanel {
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource}; script-src 'nonce-${nonce}';">
           <link rel="stylesheet" href="${styleUri}">
-          <title>${template?.name} template</title>
+          <title>${template?.name}</title>
         </head>
 
         <body id="template-body">
           <header>
-            <h1 id="template-header">${template?.name} - .${template?.extension} (${template?.isActive ? "Active" : "Inactive"})</h1>
+            <h1 id="template-header">${template?.name || "New Template"} - .${template?.extension || "lua"} (${template?.isActive ? "Active" : "Inactive"})</h1>
           </header>
 
           <section id="template-form">
             <div class="base-template-info-container">
-              <vscode-text-field id="name" value="${template?.name}" placeholder="Enter a name" size="40">Name</vscode-text-field>
+              <vscode-text-field id="name" value="${template?.name}" placeholder="New Template" size="40">Name</vscode-text-field>
               <vscode-text-field id="extension" value="${template?.extension}" placeholder="lua" size="8">
                 Extension
                 <span slot="start" class="extension-dot">.</span>
               </vscode-text-field>
             </div>
-            <vscode-text-area id="content" value="${template?.content}" placeholder="Enter header content.." resize="vertical" rows=15>Content</vscode-text-area>
+            <vscode-text-area id="content" value="${template?.content}" placeholder="-- @author: 4c65736975, All Rights Reserved\n-- @version: 1.0.0.0, {DD|MM|YYYY}\n-- @filename: {filename}" resize="vertical" rows=15>Content</vscode-text-area>
             <vscode-button disabled id="submit-button">Save</vscode-button>
           </section>
 
