@@ -123,7 +123,7 @@ export class TemplateManager implements ITemplateManager {
 
   public getTemplateContent(uri: vscode.Uri): string | undefined {
     const fileExt = path.parse(uri.path).ext.substring(1);
-    const template = this._templates.find(template => template.extension === fileExt);
+    const template = this._templates.find(template => template.extension === fileExt && template.isActive);
 
     return ParameterManager.shared?.populate(template?.content, {
       uri: uri
