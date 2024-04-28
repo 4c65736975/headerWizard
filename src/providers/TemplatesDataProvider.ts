@@ -46,7 +46,7 @@ class TemplateItem extends vscode.TreeItem {
     this.iconPath = new vscode.ThemeIcon("notebook-mimetype", new vscode.ThemeColor(isActive ? "notebookStatusSuccessIcon.foreground" : "notebookStatusErrorIcon.foreground"));
     this.command = {
       title: "Open template",
-      command: "autoHeader.showTemplateDetailView"
+      command: "headerWizard.showTemplateDetailView"
     };
   }
 }

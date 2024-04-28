@@ -1,19 +1,19 @@
 <div id="top"></div>
 <br/>
 <div align="center">
-  <a href="https://github.com/4c65736975/autoHeader">
-    <img src="https://github.com/4c65736975/autoHeader/assets/107006334/79fe12a9-8607-4a5b-8e76-86c626b77d1f" alt="Logo" width="128" height="128">
+  <a href="https://github.com/4c65736975/headerWizard">
+    <img src="https://github.com/4c65736975/headerWizard/assets/107006334/79fe12a9-8607-4a5b-8e76-86c626b77d1f" alt="Logo" width="128" height="128">
   </a>
-  <h3>AutoHeader</h3>
+  <h3>HeaderWizard</h3>
   <p>
     Visual Studio Code Extension
     <br/>
     <br/>
-    <a href="https://github.com/4c65736975/autoHeader/issues">Report Bug</a>
+    <a href="https://github.com/4c65736975/headerWizard/issues">Report Bug</a>
     ·
-    <a href="https://github.com/4c65736975/autoHeader/issues">Request Feature</a>
+    <a href="https://github.com/4c65736975/headerWizard/issues">Request Feature</a>
     ·
-    <a href="https://github.com/4c65736975/autoHeader/blob/main/CHANGELOG.md">Changelog</a>
+    <a href="https://github.com/4c65736975/headerWizard/blob/main/CHANGELOG.md">Changelog</a>
   </p>
 </div>
 <details>
@@ -57,7 +57,7 @@
 
 ## About the project
 
-AutoHeader extension for Visual Studio Code enhances your coding experience by allowing you to effortlessly add custom headers to specified file types. With this extension, you can define templates for headers tailored to different file extensions, ensuring consistency and compliance with project standards.
+HeaderWizard extension for Visual Studio Code enhances your coding experience by allowing you to effortlessly add custom headers to specified file types. With this extension, you can define templates for headers tailored to different file extensions, ensuring consistency and compliance with project standards.
 
 ### Key Features:
 - **Custom Templates**: Define unique header templates for various file types, such as .lua, .cpp, .java, etc.
@@ -67,7 +67,7 @@ AutoHeader extension for Visual Studio Code enhances your coding experience by a
 - **Simple Interface**: Simple configuration interface within VS Code makes setting up and managing templates a breeze.
 - **Extensibility**: Support for adding new file types and customizing templates as per your needs.
 
-Get the AutoHeader extension for VS Code now and level up your coding efficiency and consistency!
+Get the HeaderWizard extension for VS Code now and level up your coding efficiency and consistency!
 
 <p align="right">&#x2191 <a href="#top">back to top</a></p>
 
@@ -75,9 +75,9 @@ Get the AutoHeader extension for VS Code now and level up your coding efficiency
 
 Create your first template
 
-<img src="https://github.com/4c65736975/autoHeader/assets/107006334/4aeed8cc-6157-4445-a544-228610b69e8b" alt="screenshot">
-<img src="https://github.com/4c65736975/autoHeader/assets/107006334/0e4829f1-3ce5-4efd-a716-532b70fe26b4" alt="screenshot">
-<img src="https://github.com/4c65736975/autoHeader/assets/107006334/01be2e07-f0c1-4509-bd70-428ff878ee58" alt="screenshot">
+<img src="https://github.com/4c65736975/headerWizard/assets/107006334/4aeed8cc-6157-4445-a544-228610b69e8b" alt="screenshot">
+<img src="https://github.com/4c65736975/headerWizard/assets/107006334/0e4829f1-3ce5-4efd-a716-532b70fe26b4" alt="screenshot">
+<img src="https://github.com/4c65736975/headerWizard/assets/107006334/01be2e07-f0c1-4509-bd70-428ff878ee58" alt="screenshot">
 
 ### Prerequisites
 
@@ -89,13 +89,13 @@ If you want to install the development version you need to have [node](https://n
 
 To install the development version:
 
-1. `git clone https://github.com/4c65736975/autoHeader`
-2. `code autoHeader`
+1. `git clone https://github.com/4c65736975/headerWizard`
+2. `code headerWizard`
 3. `npm install` in the terminal, then `F5` to run
 
 To install the latest stable development version:
 
-1. Download the [latest](https://github.com/4c65736975/autoHeader/releases) release
+1. Download the [latest](https://github.com/4c65736975/headerWizard/releases) release
 2. Open the VS Code Extensions tab `Ctrl+Shift+X`
 3. Click `···` in upper right corner of the tab
 4. Click `Install from VSIX...` and select the downloaded .vsix file
@@ -111,12 +111,12 @@ To install the latest stable version:
 
 Make sure that the template you want to use is currently enabled
 
-<img src="https://github.com/4c65736975/autoHeader/assets/107006334/be5d3d09-58cd-4afe-b9a1-357ceee72c85" alt="screenshot">
+<img src="https://github.com/4c65736975/headerWizard/assets/107006334/be5d3d09-58cd-4afe-b9a1-357ceee72c85" alt="screenshot">
 
 When creating a new file, the template that is currently enabled for a given extension is automatically applied
 
-<img src="https://github.com/4c65736975/autoHeader/assets/107006334/f4cd88ca-5468-4c45-8015-759ecf44af22" alt="screenshot">
-<img src="https://github.com/4c65736975/autoHeader/assets/107006334/0babad10-23c0-4969-874c-10c693e58522" alt="screenshot">
+<img src="https://github.com/4c65736975/headerWizard/assets/107006334/f4cd88ca-5468-4c45-8015-759ecf44af22" alt="screenshot">
+<img src="https://github.com/4c65736975/headerWizard/assets/107006334/0babad10-23c0-4969-874c-10c693e58522" alt="screenshot">
 
 ### Parameters
 
@@ -152,7 +152,7 @@ Combine these parameters to create your desired date format. For instance, `{DD.
 
 ## License
 
-Distributed under the GPL-3.0 license. See [LICENSE](https://github.com/4c65736975/autoHeader/blob/main/LICENSE) for more information.
+Distributed under the GPL-3.0 license. See [LICENSE](https://github.com/4c65736975/headerWizard/blob/main/LICENSE) for more information.
 
 <p align="right">&#x2191 <a href="#top">back to top</a></p>
 
