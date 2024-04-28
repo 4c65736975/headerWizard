@@ -29,7 +29,7 @@ export class TemplateDetailsPanel implements ITemplateDetailsPanel {
     const title = `${template.name || "New Template"} - .${template.extension || "lua"} (${template.isActive ? "Active" : "Inactive"})`;
 
     if (!this.shared) {
-      const panel = vscode.window.createWebviewPanel("autoHeaderTemplateDetailView", title, vscode.ViewColumn.One, {
+      const panel = vscode.window.createWebviewPanel("headerWizardTemplateDetailView", title, vscode.ViewColumn.One, {
         enableScripts: true,
         localResourceRoots: [vscode.Uri.joinPath(extensionUri, "out")]
       });

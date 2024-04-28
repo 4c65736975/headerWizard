@@ -13,12 +13,12 @@ export function activate(context: vscode.ExtensionContext) {
   const templates = templateManager.getTemplates();
   const templatesDataProvider = new TemplatesDataProvider(templates);
 
-  const treeView = vscode.window.createTreeView("autoHeader.templates", {
+  const treeView = vscode.window.createTreeView("headerWizard.templates", {
     treeDataProvider: templatesDataProvider,
     showCollapseAll: false
   });
 
-  const openTemplate = vscode.commands.registerCommand("autoHeader.showTemplateDetailView", () => {
+  const openTemplate = vscode.commands.registerCommand("headerWizard.showTemplateDetailView", () => {
     const selectedTreeViewItem = treeView.selection[0];
     const matchingTemplate = templateManager.getTemplateById(selectedTreeViewItem.id);
 
@@ -30,7 +30,7 @@ export function activate(context: vscode.ExtensionContext) {
     TemplateDetailsPanel.render(context.extensionUri, matchingTemplate, onDidReceiveMessage);
   });
 
-  const createTemplate = vscode.commands.registerCommand("autoHeader.createTemplate", () => {
+  const createTemplate = vscode.commands.registerCommand("headerWizard.createTemplate", () => {
     const newTemplate: Template = {
       id: uuidv4(),
       name: "",
@@ -42,7 +42,7 @@ export function activate(context: vscode.ExtensionContext) {
     TemplateDetailsPanel.render(context.extensionUri, newTemplate, onDidReceiveMessage);
   });
 
-  const activeTemplate = vscode.commands.registerCommand("autoHeader.activeTemplate", (template: Template) => {
+  const activeTemplate = vscode.commands.registerCommand("headerWizard.activeTemplate", (template: Template) => {
     if (templateManager.setTemplateActive(template.id)) {
       templatesDataProvider.refresh(templates);
 
@@ -55,7 +55,7 @@ export function activate(context: vscode.ExtensionContext) {
     }
   });
 
-  const deleteTemplate = vscode.commands.registerCommand("autoHeader.deleteTemplate", (template: Template) => {
+  const deleteTemplate = vscode.commands.registerCommand("headerWizard.deleteTemplate", (template: Template) => {
     templateManager.deleteTemplate(template.id);
     templatesDataProvider.refresh(templates);
     // Close the panel if it's open and we deleted current template

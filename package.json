@@ -1,6 +1,6 @@
 {
-  "name": "auto-header",
-  "displayName": "AutoHeader",
+  "name": "header-wizard",
+  "displayName": "HeaderWizard",
   "description": "A simple extension that adds the ability to add headers template that are automatically added when creating a file.",
   "author": "4c65736975",
   "publisher": "4c65736975",
@@ -11,13 +11,13 @@
   "categories": [
     "Other"
   ],
-  "homepage": "https://github.com/4c65736975/autoHeader",
+  "homepage": "https://github.com/4c65736975/headerWizard",
   "repository": {
     "type": "git",
-    "url": "https://github.com/4c65736975/autoHeader.git"
+    "url": "https://github.com/4c65736975/headerWizard.git"
   },
   "bugs": {
-    "url": "https://github.com/4c65736975/autoHeader/issues"
+    "url": "https://github.com/4c65736975/headerWizard/issues"
   },
   "sponsor": {
     "url": "https://github.com/sponsors/4c65736975"
@@ -41,34 +41,34 @@
   "contributes": {
     "commands": [
       {
-        "command": "autoHeader.createTemplate",
-        "title": "Auto Header: Create a template",
+        "command": "headerWizard.createTemplate",
+        "title": "Header Wizard: Create a template",
         "icon": "$(add)"
       },
       {
-        "command": "autoHeader.activeTemplate",
-        "title": "Auto Header: Active a template",
+        "command": "headerWizard.activeTemplate",
+        "title": "Header Wizard: Active a template",
         "icon": "$(check)"
       },
       {
-        "command": "autoHeader.deleteTemplate",
-        "title": "Auto Header: Delete a template",
+        "command": "headerWizard.deleteTemplate",
+        "title": "Header Wizard: Delete a template",
         "icon": "$(trash)"
       }
     ],
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "autoHeader",
-          "title": "Auto Header",
+          "id": "headerWizard",
+          "title": "Header Wizard",
           "icon": "$(symbol-parameter)"
         }
       ]
     },
     "views": {
-      "autoHeader": [
+      "headerWizard": [
         {
-          "id": "autoHeader.templates",
+          "id": "headerWizard.templates",
           "name": "My Templates",
           "type": "tree",
           "visibility": "visible"
@@ -77,25 +77,25 @@
     },
     "viewsWelcome": [
       {
-        "view": "autoHeader.templates",
-        "contents": "No templates yet!\n[Create a template](command:autoHeader.createTemplate)"
+        "view": "headerWizard.templates",
+        "contents": "No templates yet!\n[Create a template](command:headerWizard.createTemplate)"
       }
     ],
     "menus": {
       "view/title": [
         {
-          "command": "autoHeader.createTemplate",
-          "when": "view == autoHeader.templates",
+          "command": "headerWizard.createTemplate",
+          "when": "view == headerWizard.templates",
           "group": "navigation@1"
         }
       ],
       "view/item/context": [
         {
-          "command": "autoHeader.activeTemplate",
+          "command": "headerWizard.activeTemplate",
           "group": "inline"
         },
         {
-          "command": "autoHeader.deleteTemplate",
+          "command": "headerWizard.deleteTemplate",
           "group": "inline"
         }
       ]

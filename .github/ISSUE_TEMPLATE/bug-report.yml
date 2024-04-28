@@ -7,13 +7,13 @@ assignees:
 body:
 - type: markdown
   attributes:
-    value: Please make sure to [search for existing issues](https://github.com/4c65736975/autoHeader/issues) before filing a new one!
+    value: Please make sure to [search for existing issues](https://github.com/4c65736975/headerWizard/issues) before filing a new one!
 
 - type: dropdown
   id: version
   attributes:
     label: Version
-    description: What version of the Auto Header does the problem apply to?
+    description: What version of the Header Wizard does the problem apply to?
     options:
       - 1.0.0
     default: 0
