@@ -55,9 +55,9 @@ function main() {
     updateButton();
   };
 
-  titleInput.addEventListener("keyup", updateName);
-  extensionInput.addEventListener("keyup", updateName);
-  contentInput.addEventListener("keyup", updateButton);
+  titleInput?.addEventListener("keyup", updateName);
+  extensionInput?.addEventListener("keyup", updateName);
+  contentInput?.addEventListener("keyup", updateButton);
 
   const onSaveButtonClick = () => {
     const template: Template = {
