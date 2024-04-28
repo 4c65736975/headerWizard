@@ -2,7 +2,7 @@
 <br/>
 <div align="center">
   <a href="https://github.com/4c65736975/autoHeader">
-    <img src="icon.png" alt="Logo" width="128" height="128">
+    <img src="https://github.com/4c65736975/autoHeader/assets/107006334/79fe12a9-8607-4a5b-8e76-86c626b77d1f" alt="Logo" width="128" height="128">
   </a>
   <h3>AutoHeader</h3>
   <p>
