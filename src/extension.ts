@@ -58,8 +58,12 @@ export function activate(context: vscode.ExtensionContext) {
   const deleteTemplate = vscode.commands.registerCommand("autoHeader.deleteTemplate", (template: Template) => {
     templateManager.deleteTemplate(template.id);
     templatesDataProvider.refresh(templates);
-    // Close the panel if it's open
-    TemplateDetailsPanel.shared?.dispose();
+    // Close the panel if it's open and we deleted current template
+    const currentTemplate = TemplateDetailsPanel.shared?.getCurrentTemplate();
+
+    if (currentTemplate && currentTemplate.id === template.id) {
+      TemplateDetailsPanel.shared?.dispose();
+    }
   });
 
   const onDidCreateFilesEvent = vscode.workspace.onDidCreateFiles(event => {
