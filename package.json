@@ -1,7 +1,7 @@
 {
   "name": "auto-header",
   "displayName": "AutoHeader",
-  "description": "A simple extension that adds the ability to add template headers that are automatically added when creating a file.",
+  "description": "A simple extension that adds the ability to add headers template that are automatically added when creating a file.",
   "author": "4c65736975",
   "publisher": "4c65736975",
   "pricing": "Free",
