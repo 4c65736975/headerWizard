@@ -43,7 +43,7 @@ function main() {
 
   const updateName = () => {
     const isActive = currentTemplate.isActive ? "Active" : "Inactive";
-    const name = titleInput.value + " - " + `.${extensionInput.value}` + ` (${isActive})`;
+    const name = (titleInput.value || "New Template") + " - " + `.${extensionInput.value || "lua"}` + ` (${isActive})`;
 
     vscode.postMessage({
       command: "update-template-name",
