@@ -75,9 +75,9 @@ Get the HeaderWizard extension for VS Code now and level up your coding efficien
 
 Create your first template
 
-<img src="https://github.com/4c65736975/headerWizard/assets/107006334/4aeed8cc-6157-4445-a544-228610b69e8b" alt="screenshot">
-<img src="https://github.com/4c65736975/headerWizard/assets/107006334/0e4829f1-3ce5-4efd-a716-532b70fe26b4" alt="screenshot">
-<img src="https://github.com/4c65736975/headerWizard/assets/107006334/01be2e07-f0c1-4509-bd70-428ff878ee58" alt="screenshot">
+<img src="https://github.com/4c65736975/headerWizard/assets/107006334/e8839579-b967-4877-bf52-a7e937251ce3" alt="screenshot">
+<img src="https://github.com/4c65736975/headerWizard/assets/107006334/c35afbe7-78fd-4de3-98c2-d356ce145341" alt="screenshot">
+<img src="https://github.com/4c65736975/headerWizard/assets/107006334/5ac2549a-583b-4f7a-a234-5f8e53bf10a0" alt="screenshot">
 
 ### Prerequisites
 
@@ -111,12 +111,12 @@ To install the latest stable version:
 
 Make sure that the template you want to use is currently enabled
 
-<img src="https://github.com/4c65736975/headerWizard/assets/107006334/be5d3d09-58cd-4afe-b9a1-357ceee72c85" alt="screenshot">
+<img src="https://github.com/4c65736975/headerWizard/assets/107006334/37eb8e1a-6288-4ca4-91bb-14a462a18a07" alt="screenshot">
 
 When creating a new file, the template that is currently enabled for a given extension is automatically applied
 
-<img src="https://github.com/4c65736975/headerWizard/assets/107006334/f4cd88ca-5468-4c45-8015-759ecf44af22" alt="screenshot">
-<img src="https://github.com/4c65736975/headerWizard/assets/107006334/0babad10-23c0-4969-874c-10c693e58522" alt="screenshot">
+<img src="https://github.com/4c65736975/headerWizard/assets/107006334/6348a7e1-f0d3-4c0d-b7f2-d0f65e8bce9d" alt="screenshot">
+<img src="https://github.com/4c65736975/headerWizard/assets/107006334/2fc711ab-c807-4681-bbd5-c522841f38e5" alt="screenshot">
 
 ### Parameters
 
