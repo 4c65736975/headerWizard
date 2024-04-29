@@ -92,10 +92,12 @@
       "view/item/context": [
         {
           "command": "headerWizard.activeTemplate",
+          "when": "view == headerWizard.templates",
           "group": "inline"
         },
         {
           "command": "headerWizard.deleteTemplate",
+          "when": "view == headerWizard.templates",
           "group": "inline"
         }
       ]
