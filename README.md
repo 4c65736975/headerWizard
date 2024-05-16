@@ -95,7 +95,7 @@ Development Version:
 
 Latest Stable Development Version:
 
-1. Download the [latest](https://github.com/4c65736975/headerWizard/releases) release
+1. Download the [latest release](https://github.com/4c65736975/headerWizard/releases)
 2. Open the VS Code Extensions tab `Ctrl+Shift+X`
 3. Click `···` in upper right corner of the tab
 4. Click `Install from VSIX...` and select the downloaded .vsix file
