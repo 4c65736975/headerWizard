@@ -87,20 +87,20 @@ If you want to install the development version you need to have [node](https://n
 
 ### Installation
 
-To install the development version:
+Development Version:
 
 1. `git clone https://github.com/4c65736975/headerWizard`
 2. `code headerWizard`
 3. `npm install` in the terminal, then `F5` to run
 
-To install the latest stable development version:
+Latest Stable Development Version:
 
 1. Download the [latest](https://github.com/4c65736975/headerWizard/releases) release
 2. Open the VS Code Extensions tab `Ctrl+Shift+X`
 3. Click `···` in upper right corner of the tab
 4. Click `Install from VSIX...` and select the downloaded .vsix file
 
-To install the latest stable version:
+Latest Stable Version:
 
 1. Install it like any other extension via VS Code Marketplace, you can follow the official [docs](https://code.visualstudio.com/docs/editor/extension-marketplace
 )
